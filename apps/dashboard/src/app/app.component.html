@@ -1,8 +1,51 @@
-<div style="text-align: center;">
-  <h1>Welcome to dashboard!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-  />
+<div class="users-containers">
+  <div class="users-list">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          User List
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let user of users; let number = index">
+            <h3 matLine>{{ user.name | titlecase }}</h3>
+            <p matLine>Username: {{ user.username }}</p>
+            <p matLine>Email: {{ user.email }}</p>
+            <p matLine>Role: {{ user.isAdmin }}</p>
+            <p matLine>
+              <img
+                mat-card-sm-image
+                [src]="user.defaultImageUrl"
+                height="50"
+                width="50"
+              />
+            </p>
+
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteUser(user.id); $event.stopImmediatePropagation()"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="user-details">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Select User
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content> </mat-card-content>
+      <mat-card-actions>
+        <!-- COURSE ACTIONS -->
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
-<div>Message: {{ hello$ | async | json }}</div>
